@@ -1,0 +1,29 @@
+﻿<Row Style="margin-left:5em">
+    <Col />
+    <a href='/'>
+        <img class="logo" src="/media/vlu-logo.png" />
+        <Text Style="color:#fff; font-size:20px;" Strong="true">Ký Túc Xá Văn Lang</Text>
+    </a>
+    <Col Offset="9" />
+    <Menu Mode="MenuMode.Horizontal" Theme="MenuTheme.Dark" Style="background-color: #10294A;" DefaultSelectedKeys=@(new []{ "1" })>
+        <MenuItem Key="1" Style="color:#fff">Trang chủ</MenuItem>
+        <MenuItem Key="2" Style="color:#fff" RouterLink="gioi-thieu">Giới thiệu</MenuItem>
+        <MenuItem Key="3" Style="color:#fff">
+           <SubMenu Title="Kí túc xá">
+               <MenuItem RouterLink="dang-ky">Đăng ký</MenuItem>
+               <MenuItem RouterLink="quan-ly">Quản lý</MenuItem>
+           </SubMenu>
+        </MenuItem>
+        <AuthorizeView>
+            <Authorized>
+                <a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a>
+                <form method="post" action="Identity/Account/LogOut">
+                    <button type="submit" class="nav-link btn btn-link">Log out</button>
+                </form>
+            </Authorized>
+            <NotAuthorized>
+                <MenuItem Style="color:#fff" Class="link-light" RouterLink="Identity/Account/Login">Log in</MenuItem>
+            </NotAuthorized>
+        </AuthorizeView>
+    </Menu>
+</Row>
